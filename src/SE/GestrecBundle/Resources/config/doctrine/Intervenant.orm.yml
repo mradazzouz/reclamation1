@@ -1,0 +1,24 @@
+SE\GestrecBundle\Entity\Intervenant:
+    type: entity
+    table: null
+    repositoryClass: SE\GestrecBundle\Repository\IntervenantRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+            column: Nom
+        prenom:
+            type: string
+            length: 255
+            column: Prenom
+        departement:
+            type: string
+            length: 255
+            column: Departement
+    lifecycleCallbacks: {  }

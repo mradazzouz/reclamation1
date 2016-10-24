@@ -1,0 +1,24 @@
+intervention_index:
+    path:     /
+    defaults: { _controller: "SEGestrecBundle:Intervention:index" }
+    methods:  GET
+
+intervention_show:
+    path:     /{id}/show
+    defaults: { _controller: "SEGestrecBundle:Intervention:show" }
+    methods:  GET
+
+intervention_new:
+    path:     /new
+    defaults: { _controller: "SEGestrecBundle:Intervention:new" }
+    methods:  [GET, POST]
+
+intervention_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SEGestrecBundle:Intervention:edit" }
+    methods:  [GET, POST]
+
+intervention_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SEGestrecBundle:Intervention:delete" }
+    methods:  DELETE

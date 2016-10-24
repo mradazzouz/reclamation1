@@ -1,0 +1,24 @@
+SE\GestrecBundle\Entity\Client:
+    type: entity
+    table: null
+    repositoryClass: SE\GestrecBundle\Repository\ClientRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+            column: Nom
+        prenom:
+            type: string
+            length: 255
+            column: Prenom
+        societe:
+            type: string
+            length: 255
+            column: Societe
+    lifecycleCallbacks: {  }

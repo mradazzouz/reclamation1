@@ -1,0 +1,28 @@
+SE\GestrecBundle\Entity\Reclamation:
+    type: entity
+    table: null
+    repositoryClass: SE\GestrecBundle\Repository\ReclamationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        description:
+            type: string
+            length: 255
+            column: Description
+        type:
+            type: string
+            length: 255
+            column: Type
+
+
+    oneToOne:
+                client:
+                  targetEntity: Client
+                  joinColumn:
+                    name: client_id
+                    referencedColumnName: id
+    lifecycleCallbacks: {  }

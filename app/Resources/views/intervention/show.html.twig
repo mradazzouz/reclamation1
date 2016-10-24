@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Intervention</h1>
+
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ intervention.id }}</td>
+            </tr>
+            <tr>
+                <th>Datedeb</th>
+                <td>{% if intervention.dateDeb %}{{ intervention.dateDeb|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{% if intervention.dateFin %}{{ intervention.dateFin|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Complexite</th>
+                <td>{{ intervention.complexite }}</td>
+            </tr>
+            <tr>
+                <th>Priorite</th>
+                <td>{{ intervention.priorite }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('intervention_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('intervention_edit', { 'id': intervention.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

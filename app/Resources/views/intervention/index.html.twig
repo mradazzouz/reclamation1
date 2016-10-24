@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Intervention list</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datedeb</th>
+                <th>Datefin</th>
+                <th>Complexite</th>
+                <th>Priorite</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for intervention in interventions %}
+            <tr>
+                <td><a href="{{ path('intervention_show', { 'id': intervention.id }) }}">{{ intervention.id }}</a></td>
+                <td>{% if intervention.dateDeb %}{{ intervention.dateDeb|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if intervention.dateFin %}{{ intervention.dateFin|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ intervention.complexite }}</td>
+                <td>{{ intervention.priorite }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('intervention_show', { 'id': intervention.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('intervention_edit', { 'id': intervention.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('intervention_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

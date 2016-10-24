@@ -1,0 +1,27 @@
+se_gestrec_client:
+    resource: "@SEGestrecBundle/Resources/config/routing/client.yml"
+    prefix:   /client
+se_gestrec_reclamation:
+    resource: "@SEGestrecBundle/Resources/config/routing/reclamation.yml"
+    prefix:   /reclamation
+
+se_gestrec_intervenant:
+    resource: "@SEGestrecBundle/Resources/config/routing/intervenant.yml"
+    prefix:   /intervenant
+se_gestrec_intervention:
+    resource: "@SEGestrecBundle/Resources/config/routing/intervention.yml"
+    prefix:   /intervention
+
+
+se_gestrec_homepage:
+    path:     /
+    defaults: { _controller: SEGestrecBundle:Default:index }
+
+se_gestrec_new:
+    path:     /new
+    defaults: { _controller: SEGestrecBundle:Client:new }
+se_gestrec_delet:
+    path:     /delet
+    defaults: { _controller: SEGestrecBundle:Client:delet }
+
+

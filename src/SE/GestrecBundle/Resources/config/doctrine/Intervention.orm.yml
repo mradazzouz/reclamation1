@@ -1,0 +1,39 @@
+SE\GestrecBundle\Entity\Intervention:
+    type: entity
+    table: null
+    repositoryClass: SE\GestrecBundle\Repository\InterventionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        dateDeb:
+            type: date
+            column: Date_deb
+        dateFin:
+            type: date
+            column: Date_fin
+        complexite:
+            type: string
+            length: 255
+        priorite:
+            type: string
+            length: 255
+
+    oneToOne:
+                    reclamation:
+                      targetEntity: Reclamation
+                      joinColumn:
+                        name: reclamation_id
+                        referencedColumnName: id
+
+
+                    intervenant:
+                      targetEntity: Intervenant
+                      joinColumn:
+                        name: intervenant_id
+                        referencedColumnName: id
+
+    lifecycleCallbacks: {  }
