@@ -11,6 +11,7 @@
                 <th>Datefin</th>
                 <th>Complexite</th>
                 <th>Priorite</th>
+                <th>Intervenant</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -22,6 +23,7 @@
                 <td>{% if intervention.dateFin %}{{ intervention.dateFin|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ intervention.complexite }}</td>
                 <td>{{ intervention.priorite }}</td>
+                <td>{{ intervention.intervenant }}</td>
                 <td>
                     <ul>
                         <li>

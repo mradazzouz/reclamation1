@@ -19,7 +19,9 @@ class ReclamationController extends Controller
      *
      */
     public function indexAction()
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         $em = $this->getDoctrine()->getManager();
 
         $reclamations = $em->getRepository('SEGestrecBundle:Reclamation')->findAll();
@@ -34,7 +36,9 @@ class ReclamationController extends Controller
      *
      */
     public function newAction(Request $request)
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         $reclamation = new Reclamation();
         $form = $this->createForm('SE\GestrecBundle\Form\ReclamationType', $reclamation);
         $form->handleRequest($request);
@@ -58,7 +62,9 @@ class ReclamationController extends Controller
      *
      */
     public function showAction(Reclamation $reclamation)
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         $deleteForm = $this->createDeleteForm($reclamation);
 
         return $this->render('reclamation/show.html.twig', array(
@@ -72,7 +78,9 @@ class ReclamationController extends Controller
      *
      */
     public function editAction(Request $request, Reclamation $reclamation)
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         $deleteForm = $this->createDeleteForm($reclamation);
         $editForm = $this->createForm('SE\GestrecBundle\Form\ReclamationType', $reclamation);
         $editForm->handleRequest($request);
@@ -97,7 +105,9 @@ class ReclamationController extends Controller
      *
      */
     public function deleteAction(Request $request, Reclamation $reclamation)
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         $form = $this->createDeleteForm($reclamation);
         $form->handleRequest($request);
 
@@ -118,7 +128,9 @@ class ReclamationController extends Controller
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm(Reclamation $reclamation)
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('reclamation_delete', array('id' => $reclamation->getId())))
             ->setMethod('DELETE')

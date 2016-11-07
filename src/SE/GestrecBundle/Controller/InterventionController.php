@@ -34,7 +34,9 @@ class InterventionController extends Controller
      *
      */
     public function newAction(Request $request)
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         $intervention = new Intervention();
         $form = $this->createForm('SE\GestrecBundle\Form\InterventionType', $intervention);
         $form->handleRequest($request);
@@ -77,7 +79,15 @@ class InterventionController extends Controller
         $editForm = $this->createForm('SE\GestrecBundle\Form\InterventionType', $intervention);
         $editForm->handleRequest($request);
 
+     /*   $super_admin=true;
+        if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+           $super_admin=false;
+        }*/
+
+
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($intervention);
             $em->flush();
@@ -89,6 +99,7 @@ class InterventionController extends Controller
             'intervention' => $intervention,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+           // 'super_admin'=>$super_admin
         ));
     }
 
@@ -97,7 +108,9 @@ class InterventionController extends Controller
      *
      */
     public function deleteAction(Request $request, Intervention $intervention)
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         $form = $this->createDeleteForm($intervention);
         $form->handleRequest($request);
 

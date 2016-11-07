@@ -21,6 +21,9 @@ SE\GestrecBundle\Entity\Intervention:
         priorite:
             type: string
             length: 255
+        suivie:
+            type: string
+            length: 255
 
     oneToOne:
                     reclamation:
@@ -30,10 +33,14 @@ SE\GestrecBundle\Entity\Intervention:
                         referencedColumnName: id
 
 
+
+
+    manyToOne:
                     intervenant:
                       targetEntity: Intervenant
                       joinColumn:
                         name: intervenant_id
                         referencedColumnName: id
+
 
     lifecycleCallbacks: {  }

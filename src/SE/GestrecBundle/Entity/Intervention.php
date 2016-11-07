@@ -38,6 +38,24 @@ class Intervention
 
     private $intervenant;
 
+    private $suivie;
+
+    /**
+     * @return mixed
+     */
+    public function getSuivie()
+    {
+        return $this->suivie;
+    }
+
+    /**
+     * @param mixed $suivie
+     */
+    public function setSuivie($suivie)
+    {
+        $this->suivie = $suivie;
+    }
+
 
     /**
      * Get id

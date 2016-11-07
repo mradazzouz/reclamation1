@@ -19,7 +19,9 @@ class IntervenantController extends Controller
      *
      */
     public function indexAction()
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         $em = $this->getDoctrine()->getManager();
 
         $intervenants = $em->getRepository('SEGestrecBundle:Intervenant')->findAll();
@@ -34,7 +36,9 @@ class IntervenantController extends Controller
      *
      */
     public function newAction(Request $request)
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         $intervenant = new Intervenant();
         $form = $this->createForm('SE\GestrecBundle\Form\IntervenantType', $intervenant);
         $form->handleRequest($request);
@@ -58,7 +62,9 @@ class IntervenantController extends Controller
      *
      */
     public function showAction(Intervenant $intervenant)
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         $deleteForm = $this->createDeleteForm($intervenant);
 
         return $this->render('intervenant/show.html.twig', array(
@@ -72,7 +78,9 @@ class IntervenantController extends Controller
      *
      */
     public function editAction(Request $request, Intervenant $intervenant)
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         $deleteForm = $this->createDeleteForm($intervenant);
         $editForm = $this->createForm('SE\GestrecBundle\Form\IntervenantType', $intervenant);
         $editForm->handleRequest($request);
@@ -97,7 +105,9 @@ class IntervenantController extends Controller
      *
      */
     public function deleteAction(Request $request, Intervenant $intervenant)
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         $form = $this->createDeleteForm($intervenant);
         $form->handleRequest($request);
 
@@ -118,7 +128,9 @@ class IntervenantController extends Controller
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm(Intervenant $intervenant)
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('intervenant_delete', array('id' => $intervenant->getId())))
             ->setMethod('DELETE')

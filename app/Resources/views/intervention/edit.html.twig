@@ -1,10 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <h1>Intervention edit</h1>
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
+    {% if is_granted('ROLE_SUPER_ADMIN') == false %}
+       <div class="hidden">
+           {{ form_row(edit_form.dateDeb) }}
+           {{ form_row(edit_form.dateFin) }}
+           {{ form_row(edit_form.complexite) }}
+           {{ form_row(edit_form.priorite) }}
+           {{ form_row(edit_form.reclamation) }}
+           {{ form_row(edit_form.intervenant) }}
+
+       </div>
+        {{ form_row(edit_form.suivie,{'attr': {'class': 'form-control','style':'height:100px'}}) }}
+
+
+    {% else %}
+
+        {{ form_row(edit_form.dateDeb) }}
+        {{ form_row(edit_form.dateFin) }}
+        {{ form_row(edit_form.complexite) }}
+        {{ form_row(edit_form.priorite) }}
+        {{ form_row(edit_form.reclamation) }}
+        {{ form_row(edit_form.intervenant) }}
+        {{ form_row(edit_form.suivie,{'attr': {'class': 'form-control','style':'height:100px'}}) }}
+
+    {% endif %}
+
+
+
+
+
+
         <input type="submit" value="Edit" />
     {{ form_end(edit_form) }}
 

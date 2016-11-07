@@ -21,6 +21,7 @@ class InterventionType extends AbstractType
             ->add('priorite')
             ->add('reclamation')
             ->add('intervenant')
+            ->add('suivie')
         ;
     }
     

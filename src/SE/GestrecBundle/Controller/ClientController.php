@@ -23,7 +23,9 @@ class ClientController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $clients = $em->getRepository('SEGestrecBundle:Client')->findAll();
-
+        if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+            return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+        }
 
         return $this->render('client/index.html.twig', array(
             'clients' => $clients,
@@ -35,7 +37,9 @@ class ClientController extends Controller
      *
      */
     public function newAction(Request $request)
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         $client = new Client();
         $form = $this->createForm('SE\GestrecBundle\Form\ClientType', $client);
         $form->handleRequest($request);
@@ -65,7 +69,9 @@ class ClientController extends Controller
      *
      */
     public function showAction(Client $client)
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         $deleteForm = $this->createDeleteForm($client);
 
         return $this->render('SEGestrecBundle:Client:show.html.twig', array(
@@ -79,7 +85,9 @@ class ClientController extends Controller
      *
      */
     public function editAction(Request $request, Client $client)
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         $deleteForm = $this->createDeleteForm($client);
         $editForm = $this->createForm('SE\GestrecBundle\Form\ClientType', $client);
         $editForm->handleRequest($request);
@@ -125,7 +133,9 @@ class ClientController extends Controller
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm(Client $client)
-    {
+    {if (!($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))) {
+        return $this->render('SEGestrecBundle:Default:accessDenied.html.twig');
+    }
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('client_delete', array('id' => $client->getId())))
             ->setMethod('DELETE')
