@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('bundles/framework/css/bootstrap.css')}}" rel="stylesheet">
+    <!--external css-->
+    <link href="{{ asset('bundles/framework/font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/zabuto_calendar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/js/gritter/css/jquery.gritter.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/lineicons/style.css')}}">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('bundles/framework/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/framework/css/style-responsive.css')}}" rel="stylesheet">
+
+    <script src="{{ asset('bundles/framework/js/chart-master/Chart.js')}}"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<!-- **********************************************************************************************************************************************************
+MAIN CONTENT
+*********************************************************************************************************************************************************** -->
+
+<div id="login-page" style="margin-top:80px">
+    <div class="container">
+
+        {% block fos_user_content %}
+            {% if error %}
+                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <form action="{{ path("fos_user_security_check") }}" method="post">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                <div class="form-group">
+                    <label for="username">{{ 'security.login.username'|trans }}</label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                </div>
+
+                <div class="form-group">
+                    <label for="password">{{ 'security.login.password'|trans }}</label>
+                    <input type="password" id="password" name="_password" required="required" />
+                </div>
+
+                <div class="checkbox">
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                </div>
+
+                <input type="submit"
+                       class="btn btn-success"
+                       id="_submit"
+                       name="_submit"
+                       value="{{ 'security.login.submit'|trans }}" />
+            </form>
+        {% endblock fos_user_content %}
+
+    </div>
+</div>
+
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="{{asset('bundles/framework/js/jquery.js')}}"></script>
+<script src="{{asset('bundles/framework/bootstrap.min.js')}}"></script>
+
+<!--BACKSTRETCH-->
+<!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+<script type="text/javascript" src="{{asset('bundles/framework/js/jquery.backstretch.min.js')}}"></script>
+<script>
+    $.backstretch("{{asset('bundles/framework/img/login-bg.jpg')}}", {speed: 500});
+</script>
+
+
+</body>
+</html>

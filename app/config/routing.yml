@@ -1,3 +1,9 @@
+se_user:
+    resource: "@SEUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+
 se_gestrec:
     resource: "@SEGestrecBundle/Resources/config/routing.yml"
     prefix:   /

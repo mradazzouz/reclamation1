@@ -25,12 +25,7 @@ SE\GestrecBundle\Entity\Intervention:
             type: string
             length: 255
 
-    oneToOne:
-                    reclamation:
-                      targetEntity: Reclamation
-                      joinColumn:
-                        name: reclamation_id
-                        referencedColumnName: id
+
 
 
 
@@ -40,6 +35,12 @@ SE\GestrecBundle\Entity\Intervention:
                       targetEntity: Intervenant
                       joinColumn:
                         name: intervenant_id
+                        referencedColumnName: id
+
+                    reclamation:
+                      targetEntity: Reclamation
+                      joinColumn:
+                        name: reclamation_id
                         referencedColumnName: id
 
 

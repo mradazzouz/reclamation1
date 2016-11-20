@@ -88,13 +88,16 @@
                         <span>Ajout</span>
                     </a>
                     <ul class="sub">
-                        <li><a  href="form.html">Ajout Intervenant</a></li>
+                        <li><a  href="{{ path('client_new') }}">Ajout Client</a></li>
                     </ul>
                     <ul class="sub">
-                        <li><a  href="form2.html">Ajout Intervention</a></li>
+                        <li><a  href="{{ path('intervenant_new') }}">Ajout Intervenant</a></li>
                     </ul>
                     <ul class="sub">
-                        <li><a  href="form3.html">Ajout Reclamation</a></li>
+                        <li><a  href="{{ path('intervention_new') }}">Ajout Intervention</a></li>
+                    </ul>
+                    <ul class="sub">
+                        <li><a  href="{{ path('reclamation_new') }}">Ajout Reclamation</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -103,9 +106,10 @@
                         <span>Tables de données</span>
                     </a>
                     <ul class="sub">
-                        <li><a  href="ListIntervenants.html">Liste des intervenants</a></li>
-                        <li><a  href="listeIntervention.html">Liste des intervenantions</a></li>
-                        <li><a  href="ListeReclamation.html">Liste des réclamations</a></li>
+                        <li><a  href="{{ path('client_index') }}">Liste des clients</a></li>
+                        <li><a  href="{{ path('intervenant_index') }}">Liste des intervenants</a></li>
+                        <li><a  href="{{ path('intervention_index') }}">Liste des interventions</a></li>
+                        <li><a  href="{{ path('reclamation_index') }}">Liste des réclamations</a></li>
 
                     </ul>
                 </li>
@@ -115,8 +119,7 @@
                         <span>Statistiques</span>
                     </a>
                     <ul class="sub">
-                        <li><a  href="morris.html">Morris</a></li>
-                        <li><a  href="chartjs.html">Chartjs</a></li>
+                        <li><a  href="{{ path('se_stat') }}">Réclamations</a></li>
                     </ul>
                 </li>
 

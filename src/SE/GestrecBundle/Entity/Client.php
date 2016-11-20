@@ -1,6 +1,7 @@
 <?php
 
 namespace SE\GestrecBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,6 +29,17 @@ class Client
      * @var string
      */
     private $societe;
+
+
+    private $reclamations;
+
+    /**
+     * Client constructor.
+     */
+    public function __construct()
+    {
+        $this->reclamations = new ArrayCollection();
+    }
 
 
     /**
@@ -115,4 +127,42 @@ class Client
     }
 
 
+
+    /**
+     * Add reclamations
+     *
+     * @param \SE\GestrecBundle\Entity\Reclamation $reclamations
+     * @return Client
+     */
+    public function addReclamation(\SE\GestrecBundle\Entity\Reclamation $reclamations)
+    {
+        $this->reclamations[] = $reclamations;
+
+        return $this;
+    }
+
+    /**
+     * Remove reclamations
+     *
+     * @param \SE\GestrecBundle\Entity\Reclamation $reclamations
+     */
+    public function removeReclamation(\SE\GestrecBundle\Entity\Reclamation $reclamations)
+    {
+        $this->reclamations->removeElement($reclamations);
+    }
+
+    /**
+     * Get reclamations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReclamations()
+    {
+        return $this->reclamations;
+    }
+
+    public function getCountReclamations()
+    {
+        return count($this->reclamations)*28;
+    }
 }

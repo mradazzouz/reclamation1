@@ -24,4 +24,8 @@ se_gestrec_delet:
     path:     /delet
     defaults: { _controller: SEGestrecBundle:Client:delet }
 
+se_stat:
+    path:     /statistique
+    defaults: { _controller: SEGestrecBundle:Statistique:ClientReclamation }
+
 

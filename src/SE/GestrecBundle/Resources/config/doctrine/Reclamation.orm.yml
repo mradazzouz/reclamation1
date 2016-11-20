@@ -19,7 +19,7 @@ SE\GestrecBundle\Entity\Reclamation:
             column: Type
 
 
-    oneToOne:
+    manyToOne:
                 client:
                   targetEntity: Client
                   joinColumn:

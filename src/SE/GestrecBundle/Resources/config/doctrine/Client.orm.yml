@@ -21,4 +21,9 @@ SE\GestrecBundle\Entity\Client:
             type: string
             length: 255
             column: Societe
+
+    oneToMany:
+      reclamations:
+        targetEntity: Reclamation
+        mappedBy: client
     lifecycleCallbacks: {  }

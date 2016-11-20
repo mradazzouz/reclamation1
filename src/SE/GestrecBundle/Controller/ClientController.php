@@ -74,7 +74,7 @@ class ClientController extends Controller
     }
         $deleteForm = $this->createDeleteForm($client);
 
-        return $this->render('SEGestrecBundle:Client:show.html.twig', array(
+        return $this->render('client/show.html.twig', array(
             'client' => $client,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -99,6 +99,8 @@ class ClientController extends Controller
 
             return $this->redirectToRoute('client_edit', array('id' => $client->getId()));
         }
+
+
 
         return $this->render('client/edit.html.twig', array(
             'client' => $client,

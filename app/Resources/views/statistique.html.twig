@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block stat %}
+
+    <div class="row mt">
+        <!--CUSTOM CHART START -->
+        <div class="border-head">
+            <h3>Réclamations</h3>
+        </div>
+        <div class="custom-bar-chart">
+            <ul class="y-axis">
+                <li><span>10</span></li>
+                <li><span>8</span></li>
+                <li><span>6</span></li>
+                <li><span>4</span></li>
+                <li><span>2</span></li>
+                <li><span>0</span></li>
+            </ul>
+
+            {% for client in clients %}
+            <div class="bar">
+                <div class="title">{{ client }}</div>
+                <div class="value tooltips" data-original-title="{{ client.countReclamations }}" data-toggle="tooltip" data-placement="top"> {{ client.countReclamations }}</div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <!--custom chart end-->
+    </div><!-- /row -->
+{% endblock %}
