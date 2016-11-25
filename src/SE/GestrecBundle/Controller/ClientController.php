@@ -97,7 +97,7 @@ class ClientController extends Controller
             $em->persist($client);
             $em->flush();
 
-            return $this->redirectToRoute('client_edit', array('id' => $client->getId()));
+            return $this->redirectToRoute('client_show', array('id' => $client->getId()));
         }
 
 

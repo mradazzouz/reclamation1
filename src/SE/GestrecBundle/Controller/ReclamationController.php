@@ -90,7 +90,7 @@ class ReclamationController extends Controller
             $em->persist($reclamation);
             $em->flush();
 
-            return $this->redirectToRoute('reclamation_edit', array('id' => $reclamation->getId()));
+            return $this->redirectToRoute('reclamation_show', array('id' => $reclamation->getId()));
         }
 
         return $this->render('reclamation/edit.html.twig', array(
